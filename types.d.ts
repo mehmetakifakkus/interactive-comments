@@ -7,6 +7,15 @@ export interface CommentProps {
   replies: any[]
 }
 
+export interface ReplyComment {
+  id: number
+  content: string
+  createdAt: string
+  score: number
+  user: User
+  replyingTo: string
+}
+
 export interface User {
   image: Image
   username: string

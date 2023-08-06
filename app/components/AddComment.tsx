@@ -12,10 +12,10 @@ export default function AddComment({ currentUser }: Props) {
       <div className="grid grid-cols-12 gap-2">
         <div className="row-start-2 sm:row-start-1 col-span-2 sm:col-span-1">
           <Image
-            src={currentUser.image.png}
+            src={currentUser?.image.png}
             width={26}
             height={26}
-            alt={currentUser.username}
+            alt={currentUser?.username}
             className="h-9 w-9"
           />
         </div>

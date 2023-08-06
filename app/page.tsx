@@ -1,19 +1,19 @@
 "use client";
 
 import data from "../data/data.json";
-import { CommentProps, User } from "@/types";
 import CommentContainer from "./components/CommentContainer";
 import AddComment from "./components/AddComment";
 import { useUserContext } from "./context/UserContext";
 import { useEffect, useState } from "react";
-import Modal from "./components/Modal";
+import { useCommentContext } from "./context/CommentContext";
 
 export default function Home() {
-  const currentUser: User = data.currentUser;
-  const comments: CommentProps[] = data.comments;
-  const { setUser } = useUserContext();
+  const { user, setUser } = useUserContext();
+  const { comments, setComments } = useCommentContext();
   const [date, setDate] = useState(new Date());
-  setUser(currentUser);
+
+  setUser(data.currentUser);
+  setComments(data.comments);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -31,7 +31,7 @@ export default function Home() {
             <CommentContainer key={comment.id} comment={comment} />
           ))}
         </div>
-        <AddComment currentUser={currentUser} />
+        <AddComment currentUser={user} />
       </main>
     </>
   );

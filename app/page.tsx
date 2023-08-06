@@ -12,16 +12,16 @@ export default function Home() {
   const { comments, setComments } = useCommentContext();
   const [date, setDate] = useState(new Date());
 
-  setUser(data.currentUser);
-  setComments(data.comments);
-
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
     }, 5000);
 
+    setUser(data.currentUser);
+    setComments(data.comments);
+
     return () => clearInterval(timer);
-  }, []);
+  }, [setUser, setComments]);
 
   return (
     <>

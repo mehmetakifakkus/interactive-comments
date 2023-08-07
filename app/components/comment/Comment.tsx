@@ -47,14 +47,14 @@ const ActionSection = ({
 }) => (
   <div className="flex flex-row gap-2">
     {isOwner &&
-      buttonGenerator("delete", "text-red-600", () => {
+      buttonGenerator("delete", "text-softred", () => {
         setOpened ? setOpened(true) : null;
       })}
     {isOwner
-      ? buttonGenerator("edit", "text-blue-800", () => {
+      ? buttonGenerator("edit", "text-moderateblue", () => {
           setIsEditMode(true);
         })
-      : buttonGenerator("reply", "text-blue-800", () => {
+      : buttonGenerator("reply", "text-moderateblue", () => {
           setIsReplyMode(true);
         })}
   </div>
@@ -82,8 +82,8 @@ export default function Comment({
       />
       <div
         key={comment.id}
-        className={`text-sm ${
-          isReply ? "w-[340px] sm:w-[572px]" : "w-[360px] sm:w-[640px]"
+        className={`text-base ${
+          isReply ? "w-[340px] sm:w-[628px]" : "w-[360px] sm:w-[696px]"
         } text-gray-500 bg-white p-5 rounded-lg`}
       >
         <div className="flex flex-row gap-4">

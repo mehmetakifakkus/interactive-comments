@@ -25,8 +25,8 @@ export default function ScoreBoard({ score, comment, setScore }: Props) {
   };
 
   return (
-    <div className="w-28 h-8 sm:w-[32px] sm:h-20 sm:py-2 rounded-lg bg-gray-100">
-      <div className="flex sm:flex-col h-8 sm:h-16 px-1 items-center justify-around">
+    <div className="w-28 h-8 sm:w-[32px] sm:h-20 sm:py-2 rounded-lg bg-lightgray">
+      <div className="flex sm:flex-col h-8 sm:h-16 px-1 items-center justify-around ">
         <div
           className="p-1 hover:cursor-pointer select-none"
           onClick={() => {
@@ -42,9 +42,7 @@ export default function ScoreBoard({ score, comment, setScore }: Props) {
             alt="upvote"
           />
         </div>
-        <span className="text-sm font-bold text-blue-900 select-none">
-          {score}
-        </span>
+        <span className="font-bold text-blue-900 select-none">{score}</span>
         <div
           className="p-1 hover:cursor-pointer select-none"
           onClick={() => {

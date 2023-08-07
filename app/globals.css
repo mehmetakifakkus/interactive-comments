@@ -6,6 +6,18 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* primary */
+  --moderate-blue: #5457b6;
+  --soft-red: #ed6468;
+  --light-grayish-blue: #c3c4ef;
+  --pale-red: #ffb8bb;
+
+  /* Neutral */
+  --dark-blue: #324152;
+  --grayish-Blue: #66717d;
+  --light-gray: #eaecf1;
+  --very-light-gray: #f5f6fa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,5 +30,5 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #eee;
+  background: rgb(var(--light-gray));
 }

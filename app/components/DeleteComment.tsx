@@ -37,7 +37,7 @@ export default function DeleteComment({
             setComments(commentsCopy.filter((c) => c.id !== comment.id));
             setIsModalOpened(false);
           }}
-          className="text-sm bg-red-600 text-white px-6 py-2 rounded"
+          className="bg-red-600 text-white px-6 py-2 rounded"
         >
           YES, DELETE
         </button>
@@ -45,7 +45,7 @@ export default function DeleteComment({
           onClick={() => {
             setIsModalOpened(false);
           }}
-          className="text-sm bg-gray-400 text-white px-6 rounded"
+          className="bg-gray-400 text-white px-6 rounded"
         >
           NO, CANCEL
         </button>

@@ -63,20 +63,6 @@
         "username": "amyrobson"
       },
       "replies": []
-    },
-    {
-      "id": 5,
-      "content": "I think you're ready to jump into React. The best way to learn is by doing. Here's a great course that I took recently: https://react2025.com It's free too!",
-      "createdAt": "8/5/2023 21:35",
-      "score": 11,
-      "user": {
-        "image": { 
-          "png": "/images/avatars/image-amyrobson.png",
-          "webp": "/images/avatars/image-amyrobson.webp"
-        },
-        "username": "amyrobson"
-      },
-      "replies": []
     }
   ]
 }

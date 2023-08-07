@@ -31,7 +31,7 @@ export default function AddComment({
   return (
     <div
       className={`w-[360px] ${
-        isReply ? "sm:w-[572px]" : "sm:w-[640px]"
+        isReply ? "sm:w-[628px]" : "sm:w-[696px]"
       } text-gray-500 bg-white p-5 rounded-lg mt-4`}
     >
       <div className="grid grid-cols-12 gap-2">
@@ -49,7 +49,7 @@ export default function AddComment({
         <div className="col-span-12 sm:col-span-9">
           <textarea
             className="w-full h-[80px] rounded-md border border-gray-300 p-2 text-gray-500 bg-white overflow-hidden resize-none"
-            placeholder={"Add a comment"}
+            placeholder={"Add a comment..."}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows={3}

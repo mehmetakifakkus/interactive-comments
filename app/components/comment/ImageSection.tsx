@@ -7,7 +7,7 @@ type Props = { comment: CommentProps | ReplyComment; isOwner: boolean };
 
 export default function ImageSection({ comment, isOwner }: Props) {
   return (
-    <div className="flex flex-row gap-2 items-center">
+    <div className="flex flex-row gap-4 items-center">
       <Image
         src={comment.user.image.png}
         width={26}

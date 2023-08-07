@@ -23,7 +23,7 @@ export default function ContentSection({
     <>
       <textarea
         className="w-full h-[80px] rounded-md border border-gray-300 p-2 text-gray-500 bg-white resize-none"
-        placeholder={"Add a comment"}
+        placeholder={"Add a comment..."}
         value={commentContent}
         onChange={(e) => setComment(e.target.value)}
         rows={4}
@@ -51,16 +51,16 @@ export default function ContentSection({
             setIsEditMode(false);
             setComment(comment.content);
           }}
-          className="w-20 mt-3 bg-gray-400 px-3 py-1 rounded-lg text-white font-semibold h-9"
+          className="w-24 mt-3 bg-gray-400 px-3 py-1 rounded-lg text-white font-semibold h-9"
         >
           CANCEL
         </button>
       </div>
     </>
   ) : (
-    <span className="text-bold">
+    <span className="text-bold text-base">
       {isReply && (
-        <span className="text-blue-800 font-semibold">{`@${
+        <span className="text-moderateblue font-semibold">{`@${
           (comment as ReplyComment).replyingTo
         } `}</span>
       )}

@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center p-12 mx-auto">
+      <main className="flex min-h-screen bg-lightgray flex-col items-center p-16 mx-auto">
         <div className="flex flex-col space-y-4 flex-wrap-reverse">
           {comments.map((comment) => (
             <CommentContainer key={comment.id} comment={comment} />

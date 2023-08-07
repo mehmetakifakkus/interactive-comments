@@ -20,7 +20,7 @@ Here are the main page and the visual explanation for the components.
 
 ## Features
 
-- First-level comments should be ordered by their score, whereas nested replies are ordered by time added. Upvoting and downvoting scores on the first level comments changes the order.
+- First-level comments are ordered by their score, whereas nested replies are ordered by time added. Upvoting and downvoting scores on the first level comments changes the order.
 - Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
 - A confirmation modal pops up before a comment or reply is deleted.
 - You can only edit or delete your own comments and replies.

@@ -1,7 +1,6 @@
 import { useCommentContext } from "@/app/context/CommentContext";
 import { CommentProps, ReplyComment } from "@/types";
 import React, { useState } from "react";
-import { updateComment } from "./utils/updateComment";
 
 type Props = {
   isEditMode: boolean;
@@ -16,30 +15,22 @@ export default function ContentSection({
   isReply,
   setIsEditMode,
 }: Props) {
-  const [commentContent, setComment] = useState(comment.content);
-  const { comments, setComments } = useCommentContext();
+  const [content, setComment] = useState(comment.content);
+  const { updateComment } = useCommentContext();
 
   return isEditMode ? (
     <>
       <textarea
         className="w-full h-[80px] rounded-md border border-gray-300 p-2 text-gray-500 bg-white resize-none"
         placeholder={"Add a comment..."}
-        value={commentContent}
+        value={content}
         onChange={(e) => setComment(e.target.value)}
         rows={4}
       />
       <div className="w-full flex place-content-end gap-2">
         <button
           onClick={() => {
-            setComments(
-              updateComment(
-                {
-                  ...(comment as CommentProps),
-                  content: commentContent,
-                },
-                comments
-              )
-            );
+            updateComment(comment, content);
             setIsEditMode(false);
           }}
           className="w-28 mt-3 bg-moderateblue px-6 py-1 rounded-lg text-white font-semibold h-9"

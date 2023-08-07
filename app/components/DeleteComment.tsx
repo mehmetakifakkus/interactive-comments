@@ -14,7 +14,7 @@ export default function DeleteComment({
   setIsModalOpened,
   comment,
 }: Props) {
-  const { comments, setComments } = useCommentContext();
+  const { deleteComment } = useCommentContext();
 
   return (
     <Modal isOpened={isModalOpened} setOpened={setIsModalOpened}>
@@ -25,19 +25,13 @@ export default function DeleteComment({
         Are you sure you want to delete this comment? This will remove the
         comment and can&apos;t be undone.
       </p>
-      <div className="flex flex-row-reverse gap-2 mt-6 reverse">
+      <div className="flex flex-row-reverse justify-between mt-6">
         <button
           onClick={() => {
-            const commentsCopy = [...comments];
-            // Remove the comment from the replies of the parent comment
-            commentsCopy.forEach((c) => {
-              c.replies = c.replies.filter((r) => r.id !== comment.id);
-            });
-            // Remove the comment from the comments list
-            setComments(commentsCopy.filter((c) => c.id !== comment.id));
+            deleteComment(comment.id);
             setIsModalOpened(false);
           }}
-          className="bg-red-600 text-white px-6 py-2 rounded"
+          className="bg-red-600 text-white px-5 py-2 rounded"
         >
           YES, DELETE
         </button>
@@ -45,7 +39,7 @@ export default function DeleteComment({
           onClick={() => {
             setIsModalOpened(false);
           }}
-          className="bg-gray-400 text-white px-6 rounded"
+          className="bg-gray-400 text-white px-5 rounded"
         >
           NO, CANCEL
         </button>

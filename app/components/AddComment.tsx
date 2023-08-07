@@ -19,14 +19,8 @@ export default function AddComment({
   setIsReplyMode,
   parentComment,
 }: Props) {
-  const { comments, setComments } = useCommentContext();
+  const { addComment, addReply } = useCommentContext();
   const [comment, setComment] = React.useState("");
-
-  const numberOfComments = comments
-    .map((comment) =>
-      comment.replies.length === 0 ? 1 : comment.replies.length + 1
-    )
-    .reduce((a, b) => a + b, 0);
 
   return (
     <div
@@ -60,36 +54,9 @@ export default function AddComment({
             onClick={() => {
               if (comment === "") return; // Don't add empty comments
               if (!isReplyMode) {
-                setComments((prev) =>
-                  prev.concat({
-                    id: numberOfComments + 1,
-                    user: currentUser,
-                    content: comment,
-                    createdAt: moment(new Date()).format("MM/DD/YYYY HH:mm"),
-                    score: 0,
-                    replies: [],
-                  })
-                );
+                addComment(currentUser, comment);
               } else {
-                const updated = comments.map((c) => {
-                  if (c.id === parentComment?.id) {
-                    return {
-                      ...c,
-                      replies: c.replies.concat({
-                        id: numberOfComments + 1,
-                        user: currentUser,
-                        content: comment,
-                        createdAt: moment(new Date()).format(
-                          "MM/DD/YYYY HH:mm"
-                        ),
-                        score: 0,
-                        replyingTo: parentComment?.user.username,
-                      }),
-                    };
-                  }
-                  return c;
-                });
-                setComments(updated);
+                addReply(currentUser, comment, parentComment!);
               }
               setComment("");
               isReplyMode && setIsReplyMode && setIsReplyMode(false);

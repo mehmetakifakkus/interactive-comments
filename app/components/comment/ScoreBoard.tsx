@@ -1,7 +1,6 @@
 import { useCommentContext } from "@/app/context/CommentContext";
 import Image from "next/image";
 import React from "react";
-import { updateComment } from "./utils/updateComment";
 import { CommentProps, ReplyComment } from "@/types";
 
 type Props = {
@@ -11,18 +10,7 @@ type Props = {
 };
 
 export default function ScoreBoard({ score, comment, setScore }: Props) {
-  const { comments, setComments } = useCommentContext();
-
-  const updateScore = (score: number) => {
-    const updated = updateComment(
-      {
-        ...(comment as CommentProps),
-        score,
-      },
-      comments
-    );
-    setComments(updated.sort((a, b) => b.score - a.score));
-  };
+  const { updateScore } = useCommentContext();
 
   return (
     <div className="w-28 h-8 sm:w-[36px] sm:h-[92px] sm:py-2 rounded-lg bg-lightgray">
@@ -31,7 +19,7 @@ export default function ScoreBoard({ score, comment, setScore }: Props) {
           className="p-1 hover:cursor-pointer select-none"
           onClick={() => {
             setScore((score) => score + 1);
-            updateScore(score + 1);
+            updateScore(score + 1, comment);
           }}
         >
           <Image
@@ -47,7 +35,7 @@ export default function ScoreBoard({ score, comment, setScore }: Props) {
           className="p-1 hover:cursor-pointer select-none"
           onClick={() => {
             setScore((score) => score - 1);
-            updateScore(score - 1);
+            updateScore(score - 1, comment);
           }}
         >
           <Image

@@ -17,6 +17,12 @@ export const CommentProvider = ({
 }) => {
   const [comments, setComments] = useState<CommentProps[]>([]);
 
+  if (process.browser) {
+    // add comments to the local storage if there are any
+    if (comments.length > 0)
+      localStorage.setItem("comments", JSON.stringify(comments));
+  }
+
   return (
     <CommentContext.Provider value={{ comments, setComments }}>
       {children}

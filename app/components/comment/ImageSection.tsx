@@ -1,9 +1,9 @@
-import { CommentProps } from "@/types";
+import { CommentProps, ReplyComment } from "@/types";
 import moment from "moment";
 import Image from "next/image";
 import React from "react";
 
-type Props = { comment: CommentProps; isOwner: boolean };
+type Props = { comment: CommentProps | ReplyComment; isOwner: boolean };
 
 export default function ImageSection({ comment, isOwner }: Props) {
   return (

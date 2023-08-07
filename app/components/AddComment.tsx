@@ -1,12 +1,24 @@
-import { User } from "@/types";
+import { CommentProps, ReplyComment, User } from "@/types";
 import Image from "next/image";
 import React from "react";
 import { useCommentContext } from "../context/CommentContext";
 import moment from "moment";
 
-type Props = { currentUser: User };
+type Props = {
+  currentUser: User;
+  isReply?: boolean;
+  isReplyMode?: boolean;
+  setIsReplyMode?: React.Dispatch<React.SetStateAction<boolean>>;
+  parentComment?: CommentProps | ReplyComment;
+};
 
-export default function AddComment({ currentUser }: Props) {
+export default function AddComment({
+  currentUser,
+  isReply,
+  isReplyMode,
+  setIsReplyMode,
+  parentComment,
+}: Props) {
   const { comments, setComments } = useCommentContext();
   const [comment, setComment] = React.useState("");
 
@@ -18,17 +30,21 @@ export default function AddComment({ currentUser }: Props) {
 
   return (
     <div
-      className={`w-[360px] sm:w-[640px] text-gray-500 bg-white p-5 rounded-lg mt-4`}
+      className={`w-[360px] ${
+        isReply ? "sm:w-[572px]" : "sm:w-[640px]"
+      } text-gray-500 bg-white p-5 rounded-lg mt-4`}
     >
       <div className="grid grid-cols-12 gap-2">
         <div className="row-start-2 sm:row-start-1 col-span-2 sm:col-span-1">
-          <Image
-            src={currentUser?.image.png}
-            width={26}
-            height={26}
-            alt={currentUser?.username}
-            className="h-9 w-9"
-          />
+          {currentUser && (
+            <Image
+              src={currentUser?.image.png}
+              width={26}
+              height={26}
+              alt={currentUser?.username}
+              className="h-9 w-9"
+            />
+          )}
         </div>
         <div className="col-span-12 sm:col-span-9">
           <textarea
@@ -42,21 +58,45 @@ export default function AddComment({ currentUser }: Props) {
         <div className="col-span-4 sm:col-span-2 col-start-9">
           <button
             onClick={() => {
-              setComments((prev) =>
-                prev.concat({
-                  id: numberOfComments + 1,
-                  user: currentUser,
-                  content: comment,
-                  createdAt: moment(new Date()).format("MM/DD/YYYY HH:mm"),
-                  score: 0,
-                  replies: [],
-                })
-              );
+              if (comment === "") return; // Don't add empty comments
+              if (!isReplyMode) {
+                setComments((prev) =>
+                  prev.concat({
+                    id: numberOfComments + 1,
+                    user: currentUser,
+                    content: comment,
+                    createdAt: moment(new Date()).format("MM/DD/YYYY HH:mm"),
+                    score: 0,
+                    replies: [],
+                  })
+                );
+              } else {
+                const updated = comments.map((c) => {
+                  if (c.id === parentComment?.id) {
+                    return {
+                      ...c,
+                      replies: c.replies.concat({
+                        id: numberOfComments + 1,
+                        user: currentUser,
+                        content: comment,
+                        createdAt: moment(new Date()).format(
+                          "MM/DD/YYYY HH:mm"
+                        ),
+                        score: 0,
+                        replyingTo: parentComment?.user.username,
+                      }),
+                    };
+                  }
+                  return c;
+                });
+                setComments(updated);
+              }
               setComment("");
+              isReplyMode && setIsReplyMode && setIsReplyMode(false);
             }}
-            className="w-full bg-blue-800 px-6 py-1 rounded-lg text-white font-semibold h-9"
+            className="w-full bg-blue-800 px-4 py-1 rounded-lg text-white font-semibold h-9"
           >
-            SEND
+            {isReplyMode ? "REPLY" : "SEND"}
           </button>
         </div>
       </div>

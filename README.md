@@ -73,8 +73,8 @@ Contributions to the project are welcome! Feel free to open issues and pull requ
 
 ## Author
 
-- Website - [Add your name here](https://mehmetakifakkus.github.io)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/mehmetakifakkus)
+- Website - [mehmetakifakkus](https://mehmetakifakkus.github.io)
+- Frontend Mentor - [@mehmetakifakkus](https://www.frontendmentor.io/profile/mehmetakifakkus)
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

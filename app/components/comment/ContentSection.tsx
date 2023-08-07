@@ -42,7 +42,7 @@ export default function ContentSection({
             );
             setIsEditMode(false);
           }}
-          className="w-28 mt-3 bg-blue-800 px-6 py-1 rounded-lg text-white font-semibold h-9"
+          className="w-28 mt-3 bg-moderateblue px-6 py-1 rounded-lg text-white font-semibold h-9"
         >
           UPDATE
         </button>

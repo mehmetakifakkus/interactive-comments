@@ -25,7 +25,7 @@ export default function ScoreBoard({ score, comment, setScore }: Props) {
   };
 
   return (
-    <div className="w-28 h-8 sm:w-[32px] sm:h-20 sm:py-2 rounded-lg bg-lightgray">
+    <div className="w-28 h-8 sm:w-[36px] sm:h-[92px] sm:py-2 rounded-lg bg-lightgray">
       <div className="flex sm:flex-col h-8 sm:h-16 px-1 items-center justify-around ">
         <div
           className="p-1 hover:cursor-pointer select-none"

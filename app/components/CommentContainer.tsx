@@ -13,7 +13,7 @@ export default function CommentContainer({ comment }: Props) {
       {comment.replies.length > 0 && (
         <div className="flex flex-row justify-between">
           <div className="sm:ml-8 border-l border-gray-300" />
-          <div className="space-y-4">
+          <div className="space-y-5">
             {comment.replies.map((reply: ReplyComment) => (
               <Comment
                 key={reply.id}

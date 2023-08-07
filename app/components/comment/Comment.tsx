@@ -84,7 +84,7 @@ export default function Comment({
         key={comment.id}
         className={`text-base ${
           isReply ? "w-[340px] sm:w-[628px]" : "w-[360px] sm:w-[696px]"
-        } text-gray-500 bg-white p-5 rounded-lg`}
+        } text-gray-500 bg-white p-6 rounded-lg`}
       >
         <div className="flex flex-row gap-4">
           <div className="hidden sm:block">

@@ -34,7 +34,7 @@ export default function AddComment({
         isReply ? "sm:w-[628px]" : "sm:w-[696px]"
       } text-gray-500 bg-white p-5 rounded-lg mt-4`}
     >
-      <div className="grid grid-cols-12 gap-2">
+      <div className="grid grid-cols-12 gap-4">
         <div className="row-start-2 sm:row-start-1 col-span-2 sm:col-span-1">
           {currentUser && (
             <Image
@@ -94,7 +94,7 @@ export default function AddComment({
               setComment("");
               isReplyMode && setIsReplyMode && setIsReplyMode(false);
             }}
-            className="w-full bg-blue-800 px-4 py-1 rounded-lg text-white font-semibold h-9"
+            className="w-full bg-moderateblue px-4 py-2 rounded-lg text-white font-semibold h-11"
           >
             {isReplyMode ? "REPLY" : "SEND"}
           </button>

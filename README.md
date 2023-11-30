@@ -4,7 +4,7 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 
 ## Live Site
 
-Check out the live site [here](https://interactive-comments-rho.vercel.app/).
+Check out the live site [here](https://interactive-comments-nextjs.vercel.app/).
 
 ## Screenshots
 
